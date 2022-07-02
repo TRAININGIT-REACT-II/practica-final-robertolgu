@@ -15,7 +15,8 @@ const Home = () => {
 
     return (
         <div className="container-md">
-            <h3>Lista de notas de {username}</h3>
+            <h1>NOTAS</h1>
+            <h3>Lista de notas de {username} : </h3>
             {notesRequest.data && notesRequest.data.length > 0 ? (
                 <NoteList notes={notesRequest.data} />
             ) : (
