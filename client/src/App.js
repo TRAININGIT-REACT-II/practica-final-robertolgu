@@ -1,29 +1,41 @@
-import { useEffect, useState } from "react";
-import Status from "./components/Status";
+import {  useState, Fragment } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import Home from "./components/Home";
+import PrivateRoute from "./components/PrivateRoute";
+import User from './contexts/user';
+import AddNote from "./components/AddNote";
+
+import { Provider } from "react-redux";
+
+// Store
+import store from "./store";
 
 // Componente principal de la aplicación.
 const App = () => {
-  const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [signedIn, setSignedIn] = useState(false);
 
-  // Cargamos el estado del servidor
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setStatus(data.status === "ok"))
-      .finally(() => setLoading(false));
-  }, []);
 
-  // Mostramos la aplicación
-  return (
-    <main>
-      <h1>Curso de React de TrainingIT</h1>
-      <p>
-        Estado del servidor:
-        {loading ? " Cargando..." : <Status status={status} />}
-      </p>
-    </main>
+  return (    
+  <Provider store={store}>
+    <User.Provider value={{ signedIn, updateUser: setSignedIn }}>
+      <Router>
+      <Fragment>
+        <Routes>
+          <Route exact path='/' element={<PrivateRoute><Home/></PrivateRoute>} />
+          <Route exact path='/notes/add' element={<PrivateRoute><AddNote/></PrivateRoute> } />
+          <Route path="/login" exact element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+        </Fragment>
+      </Router>
+      </User.Provider>
+    </Provider>
   );
+
+
 };
 
 export default App;
