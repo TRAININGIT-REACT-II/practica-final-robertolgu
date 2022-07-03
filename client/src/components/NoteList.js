@@ -4,6 +4,7 @@ import { deleteNote } from '../actions/note';
 import useApi from '../hooks/useApi';
 import Modal from './Modal';
 import { getUserToken } from '../selectors/user';
+import { useNavigate } from 'react-router';
 
 
 const NoteList = ({ notes }) => {
@@ -12,6 +13,7 @@ const NoteList = ({ notes }) => {
     const [elementIndex, setElementIndex] = useState(null);
     const [deleteElement, setDeleteElement] = useState(false);
     const token = useSelector((state) => getUserToken(state));
+    const navigate = useNavigate();
 
     const closeModal = () => setShowModal(false);
 
@@ -45,8 +47,7 @@ const NoteList = ({ notes }) => {
     }
 
     const onEdit = (noteId) => {
-        // TODO
-        // navigate("/")
+         navigate("/notes/"+noteId);
     }
     const onShowNote = (noteId) => {
         // TODO
@@ -65,9 +66,9 @@ const NoteList = ({ notes }) => {
                     <div className="card-body">
                         <h5 className="card-title">{note.title}</h5>
                         <p className="card-text">{note.content}</p>
-                        <a href="#" className="card-link" onClick={() => onShowNote(note.id)}>Ver</a>
-                        <a href="#" className="card-link" onClick={() => onEdit(note.id)}>Editar</a>
-                        <a href="#" className="card-link" onClick={() => onDelete(note.id)}>Eliminar</a>
+                        <a className="card-link" onClick={() => onShowNote(note.id)}>Ver</a>
+                        <a className="card-link" onClick={() => onEdit(note.id)}>Editar</a>
+                        <a className="card-link" onClick={() => onDelete(note.id)}>Eliminar</a>
                     </div>
                 </div>
                 </li>

@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import PrivateRoute from "./components/PrivateRoute";
 import User from './contexts/user';
 import AddNote from "./components/AddNote";
+import NoteDetail from "./components/NoteDetail";
 
 import { Provider } from "react-redux";
 
@@ -26,6 +27,7 @@ const App = () => {
         <Routes>
           <Route exact path='/' element={<PrivateRoute><Home/></PrivateRoute>} />
           <Route exact path='/notes/add' element={<PrivateRoute><AddNote/></PrivateRoute> } />
+          <Route exact path='/notes/:id' element={<PrivateRoute><NoteDetail/></PrivateRoute> } />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
