@@ -7,6 +7,8 @@ class ErrorBoundary extends Component {
         this.state = {
             error: false
         };
+        
+        this.onClick = this.onClick.bind(this);
     }
 
     static getDerivedStateFromError() {
@@ -39,4 +41,5 @@ class ErrorBoundary extends Component {
       // Si no hay errores, mostramos los nodos descendientes
       return this.props.children;
     }
-}
+} 
+export default ErrorBoundary;
