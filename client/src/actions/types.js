@@ -1,5 +1,9 @@
 const actions = [
-    "UPDATE_USER"
+    "UPDATE_USER",
+    "ADD_NOTE",
+    "UPDATE_NOTE",
+    "DELETE_NOTE",
+    "ADD_ALL_NOTES"
   ];
   
 const actionTypes = {};

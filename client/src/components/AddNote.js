@@ -18,7 +18,6 @@ const AddNote = () => {
 
 
     useEffect(() =>{
-        console.log(addNoteRequest.data);
         if (addNoteRequest.data != null){
             navigate("/")
         }
@@ -45,7 +44,6 @@ const AddNote = () => {
             author: userId
           }),
         });
-        console.log(userId);
         
         addNoteRequest.perform();
     }

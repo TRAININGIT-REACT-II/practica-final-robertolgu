@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 
-const useApi = (url, token = "", initialParams = {}, performOnMount = true) => {
+const useApi = (initialUrl, token = "", initialParams = {}, performOnMount = true) => {
 
+    const[url, setUrl] = useState(initialUrl);
     const[loading, setLoading] = useState(performOnMount);
     const[data, setData] = useState(null);
     const[error, setError] = useState(null);
@@ -11,6 +12,10 @@ const useApi = (url, token = "", initialParams = {}, performOnMount = true) => {
     const updateParams = (newParams) => {
         setFetchParams(newParams);
     };
+
+    const updateUrl = (newUrl) => {
+        setUrl(newUrl);
+    }
 
     const perform = () => {
         setPerformRequest(true);
@@ -49,7 +54,6 @@ const useApi = (url, token = "", initialParams = {}, performOnMount = true) => {
                 } else {
                     setError("");
                     setData(json);
-                    console.log(json);
                 }
             })
             .catch((error) => console.log(error))
@@ -63,6 +67,7 @@ const useApi = (url, token = "", initialParams = {}, performOnMount = true) => {
         error,
         updateParams,
         perform,
+        updateUrl
     };
 }
 
