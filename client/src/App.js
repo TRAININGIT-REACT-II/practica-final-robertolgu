@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 
 // Store
 import store from "./store";
+import EditNote from "./components/EditNote";
 
 // Componente principal de la aplicación.
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Route exact path='/' element={<PrivateRoute><Home/></PrivateRoute>} />
           <Route exact path='/notes/add' element={<PrivateRoute><AddNote/></PrivateRoute> } />
           <Route exact path='/notes/:id' element={<PrivateRoute><NoteDetail/></PrivateRoute> } />
+          <Route exact path='/notes/:id/edit' element={<PrivateRoute><EditNote/></PrivateRoute> } />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

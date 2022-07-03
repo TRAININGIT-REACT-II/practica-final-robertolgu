@@ -21,7 +21,7 @@ const NoteDetail = () => {
             setNoteDetail(noteDetailRequest.data);
           }
         }
-      }, [noteDetailRequest.data, noteDetailRequest.error, params])
+      }, [noteDetailRequest.data, noteDetailRequest.error, params]);
 
     return (        
         <div className="container-md">

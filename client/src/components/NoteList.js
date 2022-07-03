@@ -46,12 +46,11 @@ const NoteList = ({ notes }) => {
         deleteRequest.perform();
     }
 
-    const onEdit = (noteId) => {
+    const onShowNote = (noteId) => {
          navigate("/notes/"+noteId);
     }
-    const onShowNote = (noteId) => {
-        // TODO
-        navigate("/notes/"+noteId);
+    const onEdit = (noteId) => {
+        navigate("/notes/"+noteId+"/edit");
     }
 
     return (
